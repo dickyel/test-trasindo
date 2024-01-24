@@ -9,6 +9,7 @@ use App\Http\Controllers\RentalController;
 use App\Http\Controllers\Member\RentalFormController;
 use App\Http\Controllers\Member\CarController;
 use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\Member\ProfileController;
 
 
 /*
@@ -34,6 +35,9 @@ Route::get('/rental', [RentalController::class, 'index'])->name('rental');
 
 Route::group(['middleware' => ['auth']], function(){ 
     Route::group(['middleware' => 'can:member'], function (){
+        Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+        Route::patch('/profile/{id}', [ProfileController::class, 'update'])->name('profile.update');
+
         Route::get('/rental-form', [RentalFormController::class, 'index'])->name('rental.index');
         Route::post('/rental-form/store', [RentalFormController::class, 'store'])->name('member.rental.store');
 

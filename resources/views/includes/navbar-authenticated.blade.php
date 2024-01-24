@@ -43,10 +43,8 @@
                 Hi, {{ Auth::user()->name }}
               </a>
               <div class="dropdown-menu">
-                <a href="" class="dropdown-item">Dashboard</a>
-                <a href="" class="dropdown-item"
-                  >Pengaturan </a
-                >
+                <a href="{{ route('profile.index') }}" class="dropdown-item">Profile</a>
+            
                 <div class="dropdown-divider"></div>
                 <a 
                     href=""

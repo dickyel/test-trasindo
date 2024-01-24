@@ -62,8 +62,8 @@
               </a>
               <div class="dropdown-menu">
                 <a href="{{ route('rental.index') }}" class="dropdown-item">Buat Toko </a>
-                <a href="" class="dropdown-item"
-                  >Dashboard </a
+                <a href="{{ route('profile.index') }}" class="dropdown-item"
+                  >Profile </a
                 >
                 <div class="dropdown-divider"></div>
                 <a 
