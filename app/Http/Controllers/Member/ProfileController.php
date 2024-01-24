@@ -12,7 +12,6 @@ use App\Models\User;
 
 class ProfileController extends Controller
 {
-    //
     public function index()
     {
         $user = User::findOrFail(Auth::id());
@@ -28,9 +27,7 @@ class ProfileController extends Controller
                 'string',
                 'min:2',
                 'max:100',
-             
             ],
-            'role' => 'required|string',
             'nomor_telepon' => 'required|string',
             'nomor_sim' => 'required|string',
             'email' => 'required|email|unique:users,email,' . $id . ',id',
@@ -38,15 +35,14 @@ class ProfileController extends Controller
             'password' => 'nullable|confirmed|min:6',
             'password_confirmation' => 'nullable',
         ]);
-    
+
         $user = User::find($id);
-    
+
         $user->name = $request->name;
-        $user->role = $request->role;
         $user->nomor_telepon = $request->nomor_telepon;
         $user->nomor_sim = $request->nomor_sim;
         $user->email = $request->email;
-    
+
         if ($request->filled('password')) {
             if (Hash::check($request->old_password, $user->password)) {
                 $user->update([
@@ -58,9 +54,9 @@ class ProfileController extends Controller
                     ->withInput();
             }
         }
-    
+
         $user->save();
-    
+
         return back()->with('status', 'Profile updated!');
     }
 }

@@ -23,9 +23,7 @@
 
                     <div class="row">
                         <div class="col-md-2">
-
                             <img src="{{ asset('assets/profile.png') }}" class="img-thumbnail rounded mx-auto d-block">
-
                         </div>
                         <div class="col-md-10">
                             <form method="POST" action="{{ route('profile.update', $user->id) }}" enctype="multipart/form-data">
@@ -60,15 +58,13 @@
                                     </div>
                                 </div>
 
-
-
                                 <div class="row mb-3">
-                                    <label for="age" class="col-md-4 col-form-label text-md-end">{{ __('Nomor Telepon') }}</label>
+                                    <label for="nomor_telepon" class="col-md-4 col-form-label text-md-end">{{ __('Nomor Telepon') }}</label>
 
                                     <div class="col-md-6">
-                                        <input id="nomor_telepon" type="nomor_telepon" class="form-control @error('nomor_telepon') is-invalid @enderror" name="nomor_telepon" value="{{ $user->nomor_telepon }}" required>
+                                        <input id="nomor_telepon" type="text" class="form-control @error('nomor_telepon') is-invalid @enderror" name="nomor_telepon" value="{{ $user->nomor_telepon }}" required>
 
-                                        @error('age')
+                                        @error('nomor_telepon')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -76,13 +72,11 @@
                                     </div>
                                 </div>
 
- 
-
                                 <div class="row mb-3">
-                                    <label for="study" class="col-md-4 col-form-label text-md-end">{{ __('Nomor Sim') }}</label>
+                                    <label for="nomor_sim" class="col-md-4 col-form-label text-md-end">{{ __('Nomor Sim') }}</label>
 
                                     <div class="col-md-6">
-                                        <input id="study" type="text" class="form-control @error('nomor_sim') is-invalid @enderror" name="nomor_sim" value="{{ $user->nomor_sim }}" required>
+                                        <input id="nomor_sim" type="text" class="form-control @error('nomor_sim') is-invalid @enderror" name="nomor_sim" value="{{ $user->nomor_sim }}" required>
 
                                         @error('nomor_sim')
                                             <span class="invalid-feedback" role="alert">
@@ -91,7 +85,10 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <!-- End of Additional Fields -->
+
+                             
+                                <input type="hidden" name="role" value="member">
+                                   
 
                                 <div class="row mb-3">
                                     <label for="old_password" class="col-md-4 col-form-label text-md-end">{{ __('Old Password') }}</label>
@@ -145,11 +142,4 @@
         </div>
     </div>
 </div>   
-
-
 @endsection
-
-
-
-
-
